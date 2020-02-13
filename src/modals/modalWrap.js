@@ -29,24 +29,12 @@ class Modal extends Component {
       this.updateOpen();
   }
 
-  toggle = () => {
-    this.setState({ open: !this.state.open });
-  }
-
   render() {
     return(
       <div className="modal" style={this.state.open ? display : hide } > 
         <div className="modal-content">
           <h4>{this.props.title}</h4>
           {this.props.children}
-        </div>
-        <div className="model-footer">
-          <a 
-            className="modal-close waves-effect waves-green btn-flat"
-            href='#modal'
-            onClick={ this.toggle.bind(this) }>
-            Close
-          </a>
         </div>
       </div>
     );

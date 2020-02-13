@@ -30,20 +30,27 @@ class App extends Component {
 
   openModalSignIn() {
     this.setState({ 
-      modalSignIn: !this.state.modalSignIn
+      modalSignIn: !this.state.modalSignIn,
+      modalSignOut: false,
+      modalSignUp: false
     });
   }
 
   openModalSignUp() {
     this.setState({ 
-      modalSignUp: !this.state.modalSignUp 
+      modalSignUp: !this.state.modalSignUp,
+      modalSignOut: false,
+      modalSignIn: false
     });
+
   }
 
   openModalSignOut() {
     this.setState({
-      modalSignOut: !this.state.modalSignOut
-    })
+      modalSignOut: !this.state.modalSignOut,
+      modalSignUp: false,
+      modalSignIn: false
+    });
   }
 
   renderBody() {
