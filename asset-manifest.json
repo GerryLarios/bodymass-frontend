@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/bodymass-frontend/static/css/main.25a1e9b4.chunk.css",
+    "main.js": "/bodymass-frontend/static/js/main.68662141.chunk.js",
+    "main.js.map": "/bodymass-frontend/static/js/main.68662141.chunk.js.map",
+    "runtime-main.js": "/bodymass-frontend/static/js/runtime-main.140a4db3.js",
+    "runtime-main.js.map": "/bodymass-frontend/static/js/runtime-main.140a4db3.js.map",
+    "static/css/2.6a906a3b.chunk.css": "/bodymass-frontend/static/css/2.6a906a3b.chunk.css",
+    "static/js/2.9a412b1a.chunk.js": "/bodymass-frontend/static/js/2.9a412b1a.chunk.js",
+    "static/js/2.9a412b1a.chunk.js.map": "/bodymass-frontend/static/js/2.9a412b1a.chunk.js.map",
+    "index.html": "/bodymass-frontend/index.html",
+    "precache-manifest.a5a8328d0dde2c3115a5d619f52fb8fe.js": "/bodymass-frontend/precache-manifest.a5a8328d0dde2c3115a5d619f52fb8fe.js",
+    "service-worker.js": "/bodymass-frontend/service-worker.js",
+    "static/css/2.6a906a3b.chunk.css.map": "/bodymass-frontend/static/css/2.6a906a3b.chunk.css.map",
+    "static/css/main.25a1e9b4.chunk.css.map": "/bodymass-frontend/static/css/main.25a1e9b4.chunk.css.map",
+    "static/js/2.9a412b1a.chunk.js.LICENSE.txt": "/bodymass-frontend/static/js/2.9a412b1a.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.140a4db3.js",
+    "static/css/2.6a906a3b.chunk.css",
+    "static/js/2.9a412b1a.chunk.js",
+    "static/css/main.25a1e9b4.chunk.css",
+    "static/js/main.68662141.chunk.js"
+  ]
+}
