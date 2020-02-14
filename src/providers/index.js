@@ -37,3 +37,19 @@ export async function getUser() {
     console.error(error);
   }
 }
+
+export async function getCategory(id) {
+  try {
+    return await axios.get(buildPoint(`users/${id}/category`), header());
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export async function updateUser(id, data) {
+  try {
+    return await axios.put(buildPoint(`users/${id}`), data, header());
+  } catch (error) {
+    console.log(error);
+  }
+}
