@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import './App.css';
 import 'materialize-css/dist/css/materialize.min.css';
+
 import M from 'materialize-css';
 
 // Components
@@ -10,6 +12,9 @@ import SignBtn from './navbar/signButton.js';
 import SignIn from './modals/signIn.js';
 import SignUp from './modals/signUp.js';
 import SignOut from './modals/signOut.js';
+
+// User
+import User from './user/user.js';
 
 class App extends Component {
   constructor(props) {
@@ -78,9 +83,12 @@ class App extends Component {
           <Navbar>
             <SignBtn text="Sign Out" openModal={this.openModalSignOut.bind(this)} />
           </Navbar>
-          <div>
-            <p>Logged</p>
-            <SignOut open={this.state.modalSignOut} />
+          <div className="center-align">
+            <h1>Body Mass Index</h1>
+          </div>
+          <SignOut open={this.state.modalSignOut} />
+          <div className="container">
+            <User />
           </div>
         </div>
       </div>
