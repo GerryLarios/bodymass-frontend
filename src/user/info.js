@@ -9,7 +9,7 @@ export default function(props) {
           id="emailUser"
           type="text"
           value={props.email}
-          disabled/>
+          readOnly/>
         <label className="active" htmlFor="emailUser">User</label>
       </div>
       <div className="input-field col s12">
@@ -17,7 +17,7 @@ export default function(props) {
           id="weightUser"
           type="text"
           value={props.weight || "0.0"}
-          disabled/>
+          readOnly/>
         <label className="active" htmlFor="weightUser">Weight</label>
       </div>
       <div className="input-field col s12">
@@ -25,7 +25,7 @@ export default function(props) {
           id="heightUser"
           type="text"
           value={props.height || "0.0"}
-          disabled/>
+          readOnly/>
         <label className="active" htmlFor="heightUser">Height</label>
       </div>
       <div className="input-field col s12">
@@ -33,7 +33,7 @@ export default function(props) {
           id="bmiUser"
           type="text"
           value={props.bmi || "0.0"}
-          disabled/>
+          readOnly/>
         <label className="active" htmlFor="bmiUser">Body Mass Index</label>
       </div>
     </Form>
