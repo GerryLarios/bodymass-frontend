@@ -4,6 +4,6 @@ export default function ({ message, type }) {
   return(
     <div className="alert">
       <span className={type}>{message}</span>
-    <div>
+    </div>
   );
 }
