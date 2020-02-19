@@ -1,0 +1,1 @@
+{"version":3,"sources":["App.css"],"names":[],"mappings":"AAAA,OACE,SACF,CAEA,OACE,cAAe,CACf,gBACF,CAEA,OACE,aACF","file":"main.0dbe5b3d.chunk.css","sourcesContent":[".modal {\n  z-index: 2;\n}\n\n.alert {\n  display: inline;\n  margin-left: 10px; \n}\n\n.error {\n  color: #b71c1c;\n}\n"]}
