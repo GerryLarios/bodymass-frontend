@@ -20,14 +20,14 @@ export default class Landing extends Component {
   openModalSignIn() {
     this.setState({ 
       modalSignIn: !this.state.modalSignIn,
-      modalSignOut: false,
+      modalSignUp: false,
     });
   }
 
   openModalSignUp() {
     this.setState({ 
       modalSignUp: !this.state.modalSignUp,
-      modalSignOut: false,
+      modalSignIn: false,
     });
   }
 
