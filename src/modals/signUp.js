@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
+
+// Components
 import Wrap from '../modals/modalWrap.js';
 import Form from '../form/formWrap.js';
+import Alert from '../alert/alert.js';
 
+// Providers
 import { createUser } from '../providers/index.js';
 
 export default class SignUp extends Component {
@@ -10,12 +14,16 @@ export default class SignUp extends Component {
     this.state = {
       open: this.props.open,
       email: '',
-      password: ''
+      password: '',
+      alert: null
     }
   }
 
   updateOpen() {
-    this.setState({ open: this.props.open });
+    this.setState({ 
+      open: this.props.open,
+      alert: null
+    });
   }
 
   componentDidMount() {
@@ -27,6 +35,13 @@ export default class SignUp extends Component {
       this.updateOpen();
   }
 
+  getData() {
+    return {
+      email: this.state.email,
+      password: this.state.password
+    }
+  }
+
   handleEmail = ({ target }) => {
     this.setState({ email: target.value });
   }
@@ -35,18 +50,17 @@ export default class SignUp extends Component {
     this.setState({ password: target.value });
   }
 
-  getData() {
-    return {
-      email: this.state.email,
-      password: this.state.password
-    }
+  handleError = ({ data }) => {
+    this.setState({
+      alert: <Alert type='error' message={data.message} />
+    });
   }
 
   handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await createUser(this.getData());
-      console.log(data);
+      const { data } = await createUser(this.getData(), this.handleError.bind(this));
+      alert(`User ${data.email} added.`);
       window.location.reload(false);
     } catch (error) {
       console.error(error);
@@ -83,6 +97,7 @@ export default class SignUp extends Component {
             Sign Up 
             <i className="material-icons right">send</i>
           </button>
+          {this.state.alert}
         </Form>
       </Wrap>
     );

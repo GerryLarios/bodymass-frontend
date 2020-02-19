@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
+
+// Components
 import Wrap from '../modals/modalWrap.js';
 import Form from '../form/formWrap.js';
+import Alert from '../alert/alert.js';
 
+// Providers
 import { authenticate } from '../providers/index.js';
+
 
 export default class SignIn extends Component {
   constructor(props) {
@@ -10,12 +15,16 @@ export default class SignIn extends Component {
     this.state = {
       open: this.props.open,
       email: '',
-      password: ''
+      password: '',
+      alert: null
     }
   }
 
   updateOpen() {
-    this.setState({ open: this.props.open });
+    this.setState({ 
+      open: this.props.open,
+      alert: null
+    });
   }
 
   componentDidMount() {
@@ -34,6 +43,11 @@ export default class SignIn extends Component {
     }
   }
 
+  makeLogin({ data }) {
+    localStorage.setItem('token', data.token);
+    window.location.reload(false);
+  }
+
   handleEmail = ({ target }) => {
     this.setState({ email: target.value });
   }
@@ -42,12 +56,17 @@ export default class SignIn extends Component {
     this.setState({ password: target.value });
   }
 
+  handleError = ({ data }) => {
+    this.setState({
+      alert: <Alert type='error' message={data.error.user_authentication} />
+    });
+  }
+  
   handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await authenticate(this.getData());
-      localStorage.setItem('token', data.token);
-      window.location.reload(false);
+      const response = await authenticate(this.getData(), this.handleError.bind(this));
+      this.makeLogin(response);
     } catch (error) {
       console.error(error);
     }
@@ -83,6 +102,7 @@ export default class SignIn extends Component {
             Sign In
             <i className="material-icons right">send</i>
           </button>
+          {this.state.alert}
         </Form>
       </Wrap>
     );
