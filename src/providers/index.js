@@ -14,19 +14,29 @@ function header() {
   return { headers: { 'Authorization': getToken() }  }
 }
 
-export async function authenticate(data) {
+function takeError(error) {
+  // Request made and server responded
+  if(error.response) return error.response
+  // Request made and response wasn't received
+  else if(error.request) return error.request
+  // Something happened and triggered an Error
+  else return error.message
+}
+
+export async function authenticate(data, errorFunction) {
   try {
     return await axios.post(buildPoint('authenticate'), data)
   } catch (error) {
-    console.error(error);
+    errorFunction(takeError(error));
   }
 }
 
-export async function createUser(data) {
+export async function createUser(data, errorFunction) {
   try {
     return await axios.post(buildPoint('users'), data)
   } catch (error) {
-    console.error(error);
+    console.log(error.response);
+    errorFunction(takeError(error));
   }
 }
 
@@ -46,7 +56,7 @@ export async function getCategory(id) {
   }
 }
 
-export async function updateUser(id, data) {
+export async function updateUser(id, data, errorFunction) {
   try {
     return await axios.put(buildPoint(`users/${id}`), data, header());
   } catch (error) {
