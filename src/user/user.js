@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+
+import Alert from '../alert/alert.js';
 import Info from './info.js';
 import Category from './category.js';
 import Form from '../form/formWrap.js';
@@ -11,29 +13,41 @@ export default class User extends Component {
     this.state = {
       weight: 0,
       height: 0,
+      id: 0,
       info: null,
       category: null,
-      id: 0
+      alert: null
     }
   }
 
   componentDidMount() {
-    getUser().then(({ data }) => {
-      const info = <Info email={data.email} weight={data.weight} height={data.height} bmi={data.bmi} />
-      this.setState({ info, id: data.id });
-      getCategory(data.id).then(({ data }) => {
-        const name = data ? data.name : 'No category';
-        const category = <Category name={name} />
-        this.setState({ category });
-      });
-    });
+    getUser(this.handleError.bind(this))
+      .then(response => {
+        this.updateUserInfo(response.data);
+      getCategory(response.data.id)
+        .then(response => this.updateUserCategory(response))
+        .catch(console.error);
+      }).catch(console.error);
+
   }
 
   getData() {
     return {
-      weight: this.state.weight,
-      height: this.state.height
+      weight: Number(this.state.weight),
+      height: Number(this.state.height) 
     }
+  }
+
+  updateUserInfo({ id, email, weight, height, bmi }) {
+    this.setState({
+      id,
+      info: <Info email={email} weight={weight} height={height} bmi={bmi} />
+    });
+  }
+
+  updateUserCategory({ data }) {
+    const name = data ? data.name : 'No category';
+    this.setState({ category: <Category name={name} />});
   }
 
   handleWeight = ({ target }) => {
@@ -44,17 +58,20 @@ export default class User extends Component {
     this.setState({ height: target.value })
   }
 
+  handleError = ({ data }) => {
+    this.setState({
+      alert: <Alert type='error' message={data.error}/>
+    });
+  }
+
   handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await updateUser(this.state.id, this.getData());
-      const info = <Info email={data.email} weight={data.weight} height={data.height} bmi={data.bmi} />
-      this.setState({ info });
-      getCategory(this.state.id).then( ({ data }) => {  
-        const name = data ? data.name : 'No category';
-        const category = <Category name={name} />
-        this.setState({ category });
-      });
+      const { data } = await updateUser(this.state.id, this.getData(), this.handleError.bind(this));
+      this.updateUserInfo(data);
+      getCategory(this.state.id)
+        .then(response => this.updateUserCategory(response))
+        .catch(console.error);
     } catch (error) {
       console.error(error);
     }
@@ -91,6 +108,7 @@ export default class User extends Component {
                 onClick={this.handleSubmit.bind(this)}>
                 Calculate 
               </button>
+              {this.state.alert}
             </Form>
             {this.state.category}
           </div>

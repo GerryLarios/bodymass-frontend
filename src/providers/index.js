@@ -40,11 +40,11 @@ export async function createUser(data, errorFunction) {
   }
 }
 
-export async function getUser() {
+export async function getUser(errorFunction) {
   try {
     return await axios.get(buildPoint('users'), header())
   } catch (error) {
-    console.error(error);
+    errorFunction(takeError(error));
   }
 }
 
@@ -60,6 +60,6 @@ export async function updateUser(id, data, errorFunction) {
   try {
     return await axios.put(buildPoint(`users/${id}`), data, header());
   } catch (error) {
-    console.log(error);
+    errorFunction(takeError(error));
   }
 }
