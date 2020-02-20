@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/bodymass-frontend/precache-manifest.150e1409ab4b3b8acfa1872d931511ef.js"
+  "/bodymass-frontend/precache-manifest.f095afdb03335b54b69e62e1cbcc1693.js"
 );
 
 self.addEventListener('message', (event) => {
