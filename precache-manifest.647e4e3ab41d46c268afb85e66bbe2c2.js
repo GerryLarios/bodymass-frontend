@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "f22ee80783e743c394d13b0414baaef6",
+    "revision": "54d14a5b7c7d1a59456c0a3c28b88c13",
     "url": "/bodymass-frontend/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/bodymass-frontend/static/css/2.6a906a3b.chunk.css"
   },
   {
-    "revision": "f4329b9bf437db389e5d",
+    "revision": "e110772bd450cc609487",
     "url": "/bodymass-frontend/static/css/main.0dbe5b3d.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/bodymass-frontend/static/js/2.a4643b25.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "f4329b9bf437db389e5d",
-    "url": "/bodymass-frontend/static/js/main.80ccf989.chunk.js"
+    "revision": "e110772bd450cc609487",
+    "url": "/bodymass-frontend/static/js/main.142ec6d8.chunk.js"
   },
   {
     "revision": "8d48f688bce6572a5550",
