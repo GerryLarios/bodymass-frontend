@@ -58,7 +58,7 @@ export default class SignIn extends Component {
 
   handleError = ({ data }) => {
     this.setState({
-      alert: <Alert type='error' message={data.error.user_authentication} />
+      alert: <Alert type='error' message={data.error} />
     });
   }
   
